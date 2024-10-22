@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDV Vendas - Admin</title>
+    <link rel="stylesheet" href="CSS/painelAdmin.css">
+</head>
+<body>
+    <div class="container">
+        <section id="top-header">
+          <!--
+      - Menu
+      -- perfil (com todas as funções)
+      --administrar
+      ---administrar produtos
+      ----estoque(todos os produtos, com icones de +, -, update, quando clicar em um )
+      ---administrar vendedores
+      -->
+          <div class="menu-top">
+            <div class="left">
+              <span onclick="openNav()">
+                <img src="https://yyfii.github.io/img_codepen/lista.png" alt="list"/>
+              </span>
+            </div>
+            <div class="right">
+              <div id="title">PDV Vendas - Admin </div>
+            </div>
+          </div>
+        </section>              
+      
+      <!--Side menu-->
+         <div class="sidenav" id="mySidenav">
+           <a href="#">
+             <img src="https://yyfii.github.io/img_codepen/do-utilizador.png">
+             Admin </a>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+           <a href="#">
+             <img src="https://yyfii.github.io/img_codepen/aplicativos.png">
+             Dashboard</a>
+            <a href="#">
+              <img src="https://yyfii.github.io/img_codepen/usuarios-alt.png">
+              Funcionarios</a>
+            <a href="product/listar.php">
+              <img src="https://yyfii.github.io/img_codepen/carrinho-de-compras.png">
+              Produtos</a>
+            <a href="#">
+              <img src="https://yyfii.github.io/img_codepen/documento-assinado.png">
+              Clientes</a>
+            <a href="#">
+              <img src="https://yyfii.github.io/img_codepen/estatisticas.png">
+              Financeiro</a>
+           <a href="#">
+             <img src="https://yyfii.github.io/img_codepen/circulo-cruzado.png">
+             Sair </a>
+         </div>
+      <!--Dashboard-->
+      <div class="overlay" id="overlay" onclick="closeNav()"></div>
+          <section id="main">
+          <div class="middle-section">
+            <div class="main-link">
+              <a href="#">/Dashboard</a>
+            </div>
+              
+          </div>
+            <div class="section-itens">
+              <div class = "slide">
+                <div class="item">
+                  <div class="data-item">
+                     <a href="#" class="link-option">
+                    <img src="https://yyfii.github.io/img_codepen/group.png" alt="group">
+      
+                    <p class="item-title">Funcionários</p>
+                </a>
+                </div>
+              </div>
+                <div class="item">
+                <div class="data-item">
+                    <a href="product/listar.php" class="link-option">
+                    <img src="https://yyfii.github.io/img_codepen/manage_products.png" alt="products">
+      
+                    <p class="item-title">Produtos</p>
+                </a>
+                </div>
+              </div>
+                <div class="item">
+                <div class="data-item">
+                    <a href="#" class="link-option">
+                    <img src="https://yyfii.github.io/img_codepen/clients.png" alt="clientes">
+      
+                    <p class="item-title">Clientes</p>
+                </a>
+                </div>
+              </div>
+                <div class="item">
+                <div class="data-item">
+                    <a href="#" class="link-option">
+                    <img src="https://yyfii.github.io/img_codepen/finances.png" alt="finances">
+      
+                    <p class="item-title">Financeiro</p>
+                </a>
+                </div>
+              </div>
+            </div>
+            </div>
+        </section>
+      <!--Bottom menu-->
+        <section id="bottom-section">
+          <div class="bottom-menu">
+            <div class="left-b" id="itens-l-b-menu">
+              <div class="username">Usuário: Admin</div>
+              <span class="pipe"></span>
+              <div class="time"></div>
+            </div>
+            <div class="right-b" id="itens-r-b-menu">
+              <div class="options">
+                <span class="pipe"></span>
+                <a href="#">Inicio <i class="fi fi-rr-home"></i>    </a>
+                <span class="pipe"></span>
+                <a href="#">Sair 
+                <div id="exit">
+                  <img src="https://yyfii.github.io/img_codepen/cruz.png"/></div>
+                  </a>
+              </div>
+            </div>
+          </div>
+          </div>
+        </section>
+      </div>
+      <script src="JS/painelAdmin.js"></script>
+</body>
+</html>

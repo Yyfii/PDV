@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .itens-form {
+    width: 64vmin;
+    margin: 0 auto;
+  }
+  h1 {
+    text-align: center;
+  }
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  #categoria,
+  #fornecedor
+   {
+    width: 96%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+ 
+  #id_produto,
+  #nome_produto,
+  #preco_produto,
+  #qtd_produto {
+    width: 96%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  input[type="submit"] {
+    margin-top: 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+  }
+  input[type="submit"]:hover {
+    background-color: #218838;
+  }
+
+  .data-form{
+    width: 95%;
+    margin: 0 auto;
+  }
