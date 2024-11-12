@@ -19,9 +19,8 @@ $inserir = mysqli_query($conexao, $sql);
 
 
 if ($inserir) {
-    echo "Produto inserido com sucesso.";
-    /*Redirect to all products */
-    echo "<a href='listar.php'>Voltar</a>";
+    header("Location: listar.php");
+    exit;
 } else {
     echo "Erro ao inserir produto: " . mysqli_error($conexao);
 }
