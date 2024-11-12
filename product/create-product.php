@@ -1,7 +1,3 @@
-<?php
-include '../model/conexao.php';
-echo $id = $_GET['id'];
-?>
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -10,7 +6,6 @@ echo $id = $_GET['id'];
     <title>PDV - Vendas</title>
     <link rel="stylesheet" href="../CSS/reset.css" />
     <link rel="stylesheet" href="../CSS/create.css" />
-    <link rel="stylesheet" href="../CSS/hover-icon.css">
     <link rel="stylesheet" href="../CSS/dashboard-style.css" />
   </head>
   <body>
@@ -116,92 +111,68 @@ echo $id = $_GET['id'];
             </div>
         </div>
         <div class="container">
-            <div class="top-header">
-                <h1 id="top-tittle">Editar Produto</h1>
-                <div class="icons-table">
-                <div class="td-group">
-                    <a>
-                        <img src="https://yyfii.github.io/img_codepen/edit.png" alt="edit" class="icon" id="enable" />
-                        <span id="edit" class="icon-hover">Habilitar Edição</span>
-                    </a>
-                </div>
-                </div>
-            </div>
-
-            <form action="../model/product/update.php" method="post">
-                <?php
-                $sql = "SELECT * FROM `Produto` WHERE produto_id = $id";
-                $buscar = mysqli_query($conexao, $sql);
-                while($array = mysqli_fetch_array($buscar)){
-                    $id_produto = $array['produto_id'];
-                    $name = $array['nome'];
-                    $preco = $array['preco'];
-                    $qtd = $array['qtd'];
-                    $categoria_id = $array['categoria_id'];
-                    $fornecedor_id = $array['fornecedor_id'];
-                ?>
+            <h1>Cadastrar Produto</h1>
+                <form action="create.php" method="post">
                 <div class="itens-form">
-                    <div class="data-form">
-
-                    <label for="id">COD:</label>
-                    <input type="text" id="id" name="id" value="<?php echo $id ?>" style="display: none;"/>
-
-                    <label for="nome_produto">Nome do Produto:</label>
-                    <input type="text" id="nome_produto" class="disabled" name="nome_produto" value="<?php echo $name ?>" disabled/>
+                    <label  for="nome_produto">Nome do Produto:</label>
+                    <input class="nome" type="text" id="nome_produto" name="nome_produto" placeholder="Digite aqui" required />
 
                     <label for="preco_produto">Preço do Produto:</label>
-                    <input class="disabled"
-                        type="number"
-                        id="preco_produto"
-                        name="preco_produto"
-                        step="0.01"
-                        value="<?php echo $preco ?>" disabled
+                    <input class="preco"
+                    type="number"
+                    id="preco_produto"
+                    name="preco_produto"
+                    step="0.01"
+                    placeholder="0.0"
+                    required
                     />
                     <label for="qtd_produto">Quantidade do Produto:</label>
-                    <input
-                    class="disabled"
-                        type="number"
-                        id="qtd_produto"
-                        name="qtd_produto"
-                        min="0"
-                        value="<?php echo $qtd ?>" disabled
+                    <input class="qtd" 
+                    type="number"
+                    id="qtd_produto"
+                    name="qtd_produto"
+                    min="0"
+                    placeholder="0"
+                    required
                     />
                     <div class="categorias">
-                        <label for="categoria">Categoria: </label>
-                        <select name="categoria_id" id="categoria" disabled class="disabled">
+                    <label for="categoria">Categoria: </label>
+                    <select name="categoria_id" class="select" id="categoria" required>
+                        <option selected>Selecione</option>
                         <?php
-                            $sqlCate = "SELECT categoria_id, categoria_name FROM `Categoria`";
-                            $buscaCate = mysqli_query($conexao, $sqlCate);
-                            while($array = mysqli_fetch_array($buscaCate)){
-                                $idCate = $array['categoria_id'];
-                                $nameCate = $array['categoria_name'];
-                                $selected = ($idCate == $categoria_id) ? 'selected' : '';  // Seleciona a categoria atual
-                        ?>
-                        <option value='<?php echo $idCate?>' <?php echo $selected ?>><?php echo $nameCate ?></option>
+
+                                    include '../model/conexao.php';
+                                    $sql = "SELECT * FROM `Categoria`";
+                                    $busca = mysqli_query($conexao, $sql);
+                                    while($array = mysqli_fetch_array($busca)){
+                                        $id = $array['categoria_id'];
+                                        $name = $array['categoria_name'];
+                                ?>
+                        <option value='<?php echo $id ?>'><?php echo $name ?></option>
                         <?php } ?>
-                        </select>
+                    </select>
                     </div>
 
                     <div class="fornecedores">
-                        <label for="fornecedor">Fornecedor: </label>
-                        <select name="fornecedor" id="fornecedor" disabled class="disabled">
+                    <label for="fornecedor">Fornecedor: </label>
+                    <select name="fornecedor_id" id="fornecedor" class="select">
+                        <option selected>Selecione</option>
                         <?php
-                            $sqlFor = "SELECT fornecedor_id, nome FROM `Fornecedor`";
-                            $buscaFor = mysqli_query($conexao, $sqlFor);
-                            while($array = mysqli_fetch_array($buscaFor)){
-                                $idFor = $array['fornecedor_id'];
-                                $nameFor = $array['nome'];
-                                $selected = ($idFor == $fornecedor_id) ? 'selected' : '';  // Seleciona o fornecedor atual
+                            $sqlF = "SELECT * FROM `Fornecedor`";
+                            $buscaF = mysqli_query($conexao, $sqlF);
+                            while($array = mysqli_fetch_array($buscaF)){
+                                $idF = $array['fornecedor_id'];
+                                $nameF = $array['nome'];
                         ?>
-                        <option value='<?php echo $idFor?>' <?php echo $selected ?>><?php echo $nameFor ?></option>
+                        <option value='<?php echo $idF ?>'><?php echo $nameF ?></option>
                         <?php } ?>
-                        </select>
+                    </select>
                     </div>
+                    <div class="button-wrapper">
+                    <input type="submit" value="Cadastrar Produto" />
                     </div>
-                    <input type="submit" value="Editar Produto" />
                 </div>
-                <?php } ?>
-            </form>
+                </form>
         </div>
     </div>
     <script src="../JS/list.js"></script>

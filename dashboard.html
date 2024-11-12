@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDV - Vendas</title>
+    <link rel="stylesheet" href="CSS/dashboard-style.css" />
+  </head>
+  <body>
+    <div id="header">
+      <button id="show-sidebar"><i class="fa-solid fa-bars"></i></button>
+      <div class="right">
+        <div id="btnSale">+ Nova Venda</div>
+      </div>
+    </div>
+    <div id="sidebar">
+      <button id="close-sidebar"><i class="fa-solid fa-xmark"></i></button>
+      <div id="accordian">
+        <ul class="show-dropdown main-navbar">
+          <div class="selector-active">
+            <div class="top"></div>
+            <div class="bottom"></div>
+          </div>
+          <li id="user">
+            <a href="javascript:void(0);">
+              <div class="perfil">
+                <img
+                  src="https://yyfii.github.io/img_codepen/avatarFemale.png"
+                  alt="Perfil"
+                />
+              </div>
+              <div id="text">
+                <span class="item">Gerente</span>
+              </div>
+            </a>
+          </li>
+          <li class="active">
+            <a href="javascript:void(0);"
+              ><i class="fas fa-tachometer-alt"></i
+              ><span class="item">Dashboard</span></a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);"
+              ><i class="far fa-address-book"></i
+              ><span class="item">Funcionários</span></a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);"
+              ><i class="far fa-clone"></i><span class="item">Clientes</span></a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);"
+              ><i class="fa-regular fa-clipboard"></i
+              ><span class="item">Produtos</span></a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);"
+              ><i class="fa-solid fa-truck-field-un"></i
+              ><span class="item">Fornecedores</span></a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);"
+              ><i class="fas fa-money-check-alt"></i
+              ><span class="item">Financeiro</span></a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);"
+              ><i class="fa-solid fa-money-bill-trend-up"></i
+              ><span class="item">Vendas</span></a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);"
+              ><i class="far fa-envelope"></i
+              ><span class="item">Mensagens</span></a
+            >
+          </li>
+          <li id="btnExit">
+            <a href="javascript:void(0);"
+              ><i id="exit" class="fa-regular fa-circle-xmark"></i
+              ><span class="item">Sair</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!--Conteúdo da página-->
+    <div id="content">
+      <div class="c-wrapper">
+        <div class="sales">
+          <span>Vendas</span>
+          <i class="fa-solid fa-chart-line"></i>
+          <p class="value">67343</p>
+          <p class="data">Outubro</p>
+        </div>
+        <div class="produtos">
+          <i class="fa-regular fa-clipboard"></i
+          ><a href="product/n_list.php">Produtos</a>
+          <p class="value">67343</p>
+          <p class="data">Outubro</p>
+        </div>
+        <div class="clientes">
+          <i class="far fa-clone"></i><span>Clientes</span>
+        </div>
+        <div class="funcionarios">
+          <span>Funcionarios</span>
+          <i class="far fa-address-book"></i>
+          <p class="value">67343</p>
+          <p class="data">Outubro</p>
+        </div>
+        <div class="fornecedores">
+          <i class="fa-solid fa-truck-field-un"></i><span>Fornecedores</span>
+          <p class="value">67343</p>
+          <p class="data">Outubro</p>
+        </div>
+        <div class="grafico">
+          <i class="fa-solid fa-chart-pie"></i>
+          <img
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.anychart.com%2Fimages%2Fgallery%2Fv8%2Fpie-and-donut-charts-donut-chart-with-range-palette.png&f=1&nofb=1&ipt=c5581432edfa5837a108dd718855c71b642bbb687bbc60f8c07380ef7b8e7137&ipo=images"
+          />
+        </div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+    ></script>
+    <script src="JS/sidebar.js"></script>
+    <script
+      src="https://kit.fontawesome.com/84d7270ddc.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

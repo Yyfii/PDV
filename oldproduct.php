@@ -13,7 +13,7 @@
         <form action="product/create.php" method="post">
           <div class="itens-form">
             <label for="nome_produto">Nome do Produto:</label>
-            <input type="text" id="nome_produto" name="nome_produto" required />
+            <input type="text" id="nome_produto" name="nome_produto" placeholder="Digite aqui" required />
 
             <label for="preco_produto">Preço do Produto:</label>
             <input
@@ -21,6 +21,7 @@
               id="preco_produto"
               name="preco_produto"
               step="0.01"
+              placeholder="0.0"
               required
             />
             <label for="qtd_produto">Quantidade do Produto:</label>
@@ -29,33 +30,32 @@
               id="qtd_produto"
               name="qtd_produto"
               min="0"
+              placeholder="0"
               required
             />
             <div class="categorias">
-
               <label for="categoria">Categoria: </label>
               <select name="categoria_id" id="categoria" required>
-              <option selected>Selecione</option>
-                <?php
+                <option selected>Selecione</option>
+                  <?php
 
-                            include 'model/conexao.php';
-                            $sql = "SELECT * FROM `Categoria`";
-                            $busca = mysqli_query($conexao, $sql);
-                            while($array = mysqli_fetch_array($busca)){
-                                $id = $array['categoria_id'];
-                                $name = $array['categoria_name'];
-                        ?>
-                <option value='<?php echo $id ?>'><?php echo $name ?></option>
-                <?php }?>
+                              include 'model/conexao.php';
+                              $sql = "SELECT * FROM `Categoria`";
+                              $busca = mysqli_query($conexao, $sql);
+                              while($array = mysqli_fetch_array($busca)){
+                                  $id = $array['categoria_id'];
+                                  $name = $array['categoria_name'];
+                          ?>
+                  <option value='<?php echo $id ?>'><?php echo $name ?></option>
+                  <?php } ?>
               </select>
             </div>
-            <div class="fornecedores">
 
+            <div class="fornecedores">
               <label for="fornecedor">Fornecedor: </label>
               <select name="fornecedor_id" id="fornecedor">
                 <option selected>Selecione</option>
                 <?php
-                      include 'model/conexao.php';
                       $sqlF = "SELECT * FROM `Fornecedor`";
                       $buscaF = mysqli_query($conexao, $sqlF);
                       while($array = mysqli_fetch_array($buscaF)){
@@ -65,10 +65,10 @@
                   <option value='<?php echo $idF ?>'><?php echo $nameF ?></option>
                   <?php } ?>
               </select>
-
             </div>
-
-            <input type="submit" value="Cadastrar Produto" />
+            <div class="button-wrapper">
+              <input type="submit" value="Cadastrar Produto" />
+            </div>
           </div>
         </form>
     </div>

@@ -14,7 +14,7 @@ echo $id = $_GET['id'];
     <link rel="stylesheet" href="../CSS/dashboard-style.css" />
   </head>
   <body>
-    <div id="header">
+  <div id="header">
         <button id="show-sidebar"><i class="fa-solid fa-bars"></i></button>
         <div class="right">
             <div id="btnSale">+ Nova Venda</div>
@@ -58,13 +58,13 @@ echo $id = $_GET['id'];
               ><i class="far fa-clone"></i><span class="item">Clientes</span></a
             >
           </li>
-          <li class="active">
+          <li>
             <a href="javascript:void(0);"
               ><i class="fa-regular fa-clipboard"></i
               ><span class="item">Produtos</span></a
             >
           </li>
-          <li>
+          <li  class="active">
             <a href="javascript:void(0);"
               ><i class="fa-solid fa-truck-field-un"></i
               ><span class="item">Fornecedores</span></a
@@ -102,15 +102,15 @@ echo $id = $_GET['id'];
          <!--Deveria ter as informações de quem está vendendo, hora, opção de cancelar venda-->
         <div class="options">
             <div class="top">
-                <a href="create-product.php"><button id="add">
-                    <img src="https://yyfii.github.io/img_codepen/carrinho-de-compras.png"/>
-                    <p>Novo Produto</p></button></a>
+                <a href="create-fornecedor.php"><button id="add">
+                <i class="fa-solid fa-square-plus"></i>
+                    <p>Novo Fornecedor</p></button></a>
             </div>
             <div class="listar">
             <a href="listar.php">
                 <button id="estoque">
                 <i class="fa-solid fa-list"></i>
-                    <p>Estoque</p>
+                    <p>Lista de Fornecedores</p>
                 </button>
                 </a>
             </div>
@@ -128,80 +128,59 @@ echo $id = $_GET['id'];
                 </div>
             </div>
 
-            <form action="../model/product/update.php" method="post">
+            <form action="../model/fornecedor/update.php" method="post">
                 <?php
-                $sql = "SELECT * FROM `Produto` WHERE produto_id = $id";
+                $sql = "SELECT * FROM `Fornecedor` WHERE fornecedor_id = $id";
                 $buscar = mysqli_query($conexao, $sql);
                 while($array = mysqli_fetch_array($buscar)){
-                    $id_produto = $array['produto_id'];
+                    $id_fornecedor= $array['fornecedor_id'];
                     $name = $array['nome'];
-                    $preco = $array['preco'];
-                    $qtd = $array['qtd'];
-                    $categoria_id = $array['categoria_id'];
-                    $fornecedor_id = $array['fornecedor_id'];
+                    $email = $array['email'];
+                    $tel1 = $array['telefone1'];
+                    $setor_id = $array['setor_id'];
+                    $pix = $array['pix'];
+                    $tel2 = $array['telefone2'];
                 ?>
+              <form action="create.php" method="post">
                 <div class="itens-form">
-                    <div class="data-form">
 
-                    <label for="id">COD:</label>
                     <input type="text" id="id" name="id" value="<?php echo $id ?>" style="display: none;"/>
 
-                    <label for="nome_produto">Nome do Produto:</label>
-                    <input type="text" id="nome_produto" class="disabled" name="nome_produto" value="<?php echo $name ?>" disabled/>
+                    <label for="nome_fornecedor">Nome:</label>
+                    <input class="nome" type="text" id="nome_fornecedor" name="nome_fornecedor" value="<?php echo $name ?>" disabled/>
 
-                    <label for="preco_produto">Preço do Produto:</label>
-                    <input class="disabled"
-                        type="number"
-                        id="preco_produto"
-                        name="preco_produto"
-                        step="0.01"
-                        value="<?php echo $preco ?>" disabled
-                    />
-                    <label for="qtd_produto">Quantidade do Produto:</label>
-                    <input
-                    class="disabled"
-                        type="number"
-                        id="qtd_produto"
-                        name="qtd_produto"
-                        min="0"
-                        value="<?php echo $qtd ?>" disabled
-                    />
+                    <label for="email">Email:</label>
+                    <input class="nome" type="email" id="email" name="email" value="<?php echo $email?>"  disabled/>
+
+                    <label  for="tel1">Telefone 1:</label>
+                    <input class="nome" type="tel" id="tel1" name="tel1" value="<?php echo $tel1?>"  disabled/>
+
+                    <label for="tel2">Telefone 2:</label>
+                    <input class="nome" type="tel" id="tel2" name="tel2" value="<?php echo $tel2?>"  disabled/>
+                    <label for="pix">PIX:</label>
+                    <input class="nome" type="text" id="pix" name="pix" value="<?php echo $pix?>"  disabled/>
                     <div class="categorias">
-                        <label for="categoria">Categoria: </label>
-                        <select name="categoria_id" id="categoria" disabled class="disabled">
+                    <label for="setor">Setor: </label>
+                    <select name="setor_id" id="setor" class="select" disabled>
+                        <option selected>Selecione</option>
                         <?php
-                            $sqlCate = "SELECT categoria_id, categoria_name FROM `Categoria`";
-                            $buscaCate = mysqli_query($conexao, $sqlCate);
-                            while($array = mysqli_fetch_array($buscaCate)){
-                                $idCate = $array['categoria_id'];
-                                $nameCate = $array['categoria_name'];
-                                $selected = ($idCate == $categoria_id) ? 'selected' : '';  // Seleciona a categoria atual
+                                    $sql = "SELECT * FROM `Setor` WHERE setor_id=$setor_id" ;
+                                    $busca = mysqli_query($conexao, $sql);
+                                    while($array = mysqli_fetch_array($busca)){
+                                        $id_setor = $array['setor_id'];
+                                        $name = $array['nome'];
                         ?>
-                        <option value='<?php echo $idCate?>' <?php echo $selected ?>><?php echo $nameCate ?></option>
+                        <option value='<?php echo $id_setor ?>' selected><?php echo $name ?></option>
                         <?php } ?>
-                        </select>
+                    </select>
                     </div>
-
-                    <div class="fornecedores">
-                        <label for="fornecedor">Fornecedor: </label>
-                        <select name="fornecedor" id="fornecedor" disabled class="disabled">
-                        <?php
-                            $sqlFor = "SELECT fornecedor_id, nome FROM `Fornecedor`";
-                            $buscaFor = mysqli_query($conexao, $sqlFor);
-                            while($array = mysqli_fetch_array($buscaFor)){
-                                $idFor = $array['fornecedor_id'];
-                                $nameFor = $array['nome'];
-                                $selected = ($idFor == $fornecedor_id) ? 'selected' : '';  // Seleciona o fornecedor atual
-                        ?>
-                        <option value='<?php echo $idFor?>' <?php echo $selected ?>><?php echo $nameFor ?></option>
-                        <?php } ?>
-                        </select>
+                    <div class="button-wrapper">
+                    <input type="submit" value="Salvar" />
+                    <?php } ?>
                     </div>
-                    </div>
-                    <input type="submit" value="Editar Produto" />
                 </div>
-                <?php } ?>
-            </form>
+                </form>
+        </div>
         </div>
     </div>
     <script src="../JS/list.js"></script>

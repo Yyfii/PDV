@@ -1,8 +1,4 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    padding: 20px;
-  }
+
   .container {
     max-width: 600px;
     margin: 0 auto;
@@ -11,6 +7,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
+
   .itens-form {
     width: 64vmin;
     margin: 0 auto;
@@ -22,8 +19,7 @@ body {
     display: block;
     margin-top: 10px;
   }
-  #categoria,
-  #fornecedor
+  .select  
    {
     width: 96%;
     padding: 10px;
@@ -32,11 +28,10 @@ body {
     border-radius: 4px;
   }
 
- 
-  #id_produto,
-  #nome_produto,
-  #preco_produto,
-  #qtd_produto {
+  .id,
+  .nome,
+  .preco,
+  .qtd {
     width: 96%;
     padding: 10px;
     margin-top: 5px;
@@ -61,3 +56,4 @@ body {
     width: 95%;
     margin: 0 auto;
   }
+
